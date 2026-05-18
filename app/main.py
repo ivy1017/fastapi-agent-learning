@@ -1,36 +1,11 @@
 from fastapi import FastAPI
-from sqlalchemy.orm import Session
-
-from app.database import SessionLocal
-from app.models.order import DouplusOrder
+from app.routers.orders import router as order_router
 
 app = FastAPI()
+
+app.include_router(order_router)
 
 
 @app.get("/")
 def home():
-    return {"message": "dou+ agent 后端运行中"}
-
-
-@app.get("/orders/{user_id}")
-def get_order(user_id: str):
-    db: Session = SessionLocal()
-
-    order = (
-        db.query(DouplusOrder)
-        .filter(DouplusOrder.user_id == user_id)
-        .first()
-    )
-
-    db.close()
-
-    if not order:
-        return {"error": "order not found"}
-
-    return {
-        "user_id": order.user_id,
-        "budget": order.budget,
-        "roi": order.roi,
-        "ctr": order.ctr,
-        "cpm": order.cpm
-    }
+    return {"message": "dou+ agent 后端服务已启动"}

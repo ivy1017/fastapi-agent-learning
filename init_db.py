@@ -1,6 +1,8 @@
-from database import engine
-from model import Base, DouplusOrder
 from sqlalchemy.orm import Session
+
+from app.database import engine
+from app.models.order import DouplusOrder
+from app.database import Base
 
 Base.metadata.create_all(bind=engine)
 
