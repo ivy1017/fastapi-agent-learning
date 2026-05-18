@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Float
-from database import Base
+from app.database import Base
 
 """ Python 类 = 数据库表，类属性等价于表字段 """
 class DouplusOrder(Base):

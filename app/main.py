@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from sqlalchemy.orm import Session
 
-from database import SessionLocal
-from model import DouplusOrder
+from app.database import SessionLocal
+from app.models.order import DouplusOrder
 
 app = FastAPI()
 
